@@ -36,7 +36,7 @@ Make sure to save your script once you've edited it.
 
 ### Testing the Project
 
-We've done a lot since we first created this project. Let's make sure to save our scene (`Ctrl+S` (Windows) / `⌘Cmd+S` (Mac) or `File` -> `Save`). You'll know it has saved once the asterick by the scene name disappears.
+We've done a lot since we first created this project. Let's make sure to save our scene (`Ctrl+S` (Windows) / `⌘Cmd+S` (Mac) or `File` -> `Save`). You'll know it has saved once the asterisk by the scene name disappears.
 
 Next, make sure the console tab is showing (so that you'll be able to see the output of your debug message) and click the play button to see your work in action.
 

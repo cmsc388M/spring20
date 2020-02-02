@@ -15,7 +15,7 @@ Next, open up your terminal and navigate to this same folder. Then enter the fol
 Initialized empty Git repository in [LOCATION OF YOUR PROJECT]/Spinning Cube/.git/
 ```
 
-Next, we will want to set up the project to make use of Git Large File Storage (LFS). By default, Git doesn't really work well or efficiently with binary files (i.e. any non-text-based file like images, sounds, 3D models, etc.), but Git LFS fixes this. The `.gitattributes` file that you added to your project folder at the start of this step defines the files that should be tracked with Git LFS.
+Now let's set up the repo to make use of Git Large File Storage (LFS). By default, Git doesn't really work well or efficiently with binary files (i.e. any non-text-based file like images, sounds, 3D models, etc.), but Git LFS fixes this. The `.gitattributes` file that you added to your project folder at the start of this step defines the files that should be tracked with Git LFS.
 
 Type in the following command so that the repo can use Git LFS.
 
@@ -25,7 +25,7 @@ Updated git hooks.
 Git LFS initialized.
 ```
 
-Next, you will want to add and commit your project to the Git repo. Note that you must add a message in order to successfully commit in git. The example below has the message "Added project".
+At this point, you will want to add and commit your project to the repo. Note that you must add a message in order to successfully commit in git. The example below has the message "Added project".
 
 ```
 > git add --all
