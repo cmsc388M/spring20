@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  title: 'Week 3 Examples'
+  subtitle: '3 - Collisions'
+  sections:
+  - heading: 'Playing the Scene'
+    text: 'This scene is the first part of our in-class lab activity, where
+           you''ll be writing your own code to implement some functionalities.
+           First, get familiar with the scene by playing it in your Editor.
+           You have a sphere as your player that you can move around with the
+           WASD/arrow keys while following it from a third-person perspective.
+           Notice that there''s a cube in the next room. You can bump into the
+           cube and even push it around. What if you could detect this and then
+           apply some cool custom effect when this happens?'
+  - heading: 'Glow On Collision'
+    text: 'We have added a script to the Cube called ''Color Changing Cube''.
+           You''ll notice that it takes in three materials, that we''ve
+           initialized to a glowing yellow material, a glowing red material,
+           and the default material. Open up this script in your code editor
+           and write some code to make the cube glow yellow when you first
+           make contact with it.'
+  - heading: 
+    text: 'Your first approach may have been to just change the material on
+           the Cube''s mesh renderer as soon as there is an OnCollisionEnter
+           event. However, if you do this, you''ll notice that the Cube begins
+           to glow as soon as it touches the floor. This is because a collision
+           occurred between the cube and the floor. If you want to restrict it
+           to only consider collision events with the Player, you can get
+           information about the collider and GameObject that was hit using
+           the Collision parameter. This way you can compare the GameObject''s
+           identifying properties, like names and tags. Go ahead and modify
+           your script so that it only begins to glow when the player hits it.'
+  - heading: 
+    text: 'After you have finished and tested your latest changes, you will
+           notice that the cube continues to glow even after you stop touching
+           it. This is because OnCollisionEnter is an event, not a state. It
+           just executes a piece of code when the specific event of the cube
+           colliding with another object occurs. However, there is no code
+           currently defined to switch the cube''s material to something else,
+           hence why it continues to have the glowing yellow material.'
+  - heading: 'Finishing the OnCollision Events'
+    text: 'In the same way that you implemented the first part, apply the
+           RedGlowMaterial to the cube when the player continues to touch it
+           and reset the material to DefaultMaterial once the Player is no
+           longer touching the Cube. Test it in the Editor once you have
+           finished.'
+  - heading: 'Opening the Door'
+    text: 'You''ll also notice that there is a sliding door in the middle of
+           the wall with a room on the other side. However, if you move towards
+           it, the door doesn''t open and you can''t seem to get past it. How
+           could you make it automatically open when you get close to it?'
+  - heading: 
+    text: 'You could try adding a box collider that covers a much larger floor
+           area than the door. However, that would mean you would collide into
+           the collider and wouldn''t be able to get past it to actually reach
+           the door. Luckily, there''s a special property of the collider
+           called ''Trigger'' that allows the collider to detect collisions
+           while not affecting the physics system. Go ahead and create a
+           trigger around the door.'
+  - heading: 
+    text: 'Next, you''ll notice that the door already has a script on it called
+           ''Door''. In this script we have provided you some helper methods to
+           open and close the door. Write some code to open the door when
+           a GameObject enters the trigger and to close the door when there''s
+           no longer anything within the trigger.'
+  loadedLayout: 1

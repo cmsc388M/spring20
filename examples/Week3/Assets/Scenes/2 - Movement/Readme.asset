@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  title: 'Week 3 Examples'
+  subtitle: '2 - Movement'
+  sections:
+  - heading: 'Setting the Scene'
+    text: 'Here we have a plane as the ground, a wall in front of us, and an
+           invisible wall behind us (an empty GameObject with a large box
+           collider to make it seen by the physics system). Our main player
+           GameObject is a cube that is viewed from the lens of a Camera in a
+           third-person perspective. The cube has a collider as well as a
+           Rigidbody to allow it to react correctly to physics. The Rigidbody
+           has constraints that disable its rotation, to keep it from toppling
+           over when you apply forces onto the cube.'
+  - heading: 
+    text: 'The cube contains two scripts that each give it a very basic player
+           controller movement functionality. The first is Transform movement,
+           which has been left enabled and implements the functionality with
+           a similar approach to what you did in project 1A. The second is
+           Rigidbody Movement, which has been disabled and implements the
+           functionality by manipulating the Player''s Rigidbody.'
+  - heading: 'The Problem with Transform Movement'
+    text: 'Play the scene and keep the ''W'' key pressed to try moving forward.
+           You''ll notice that you move forward up until you hit the wall, after
+           which point there''s a jittery behavior when you keep trying to move
+           forward. The reason for this is because the Transform methods do not
+           take physics into account, and as such you move forward slightly
+           into the wall during the frame update and then during the next
+           physics update, the Rigidbody notices you''re disobeying the laws of
+           physics and kicks in to push you out of the wall''s collider. This
+           back and forth action happens very fast, and thus appears as the
+           ''jitteriness''.'
+  - heading: 'Manipulating the Rigidbody'
+    text: 'Disable the Transform Movement script and enable the Rigidbody
+           Movement script on your player. If you try to play the scene again,
+           you''ll notice that the jitteriness no longer appears when you keep
+           moving forward after you''ve hit the wall. In fact, you no longer
+           even move forward in the first place! This is because the Rigidbody
+           Rigidbody methods account for physics and collisions when
+           determining movement.'
+  - heading: 
+    text: 'Open up the Rigidbody Movement script in your code editor to see how
+           it''s been implemented. You''ll notice that the Rigidbody is
+           manipulated during the FixedUpdate event function, which allows it
+           to be called during the Physics step. At the same time, the Input is
+           still gathered during the regular Update event function, since
+           FixedUpdate it is not guaranteed to be fired every frame and polling
+           for input in there could potentially cause the input to be lost in
+           some edge cases.'
+  - heading: 'High Velocities'
+    text: 'In the inspector, change the force applied to be 10,000 so that the
+           cube will move forward very fast when you hit the ''W'' key. What
+           happens when you play the scene?'
+  - heading: 
+    text: 'Your cube goes straight through the wall and you free fall
+           infinitely! This is because, by default, the Rigidbody only detects
+           collisions once per physics step. This is done to improve
+           performance, however it poses a problem if object A is moving so
+           fast that it is on one side of object B''s collider during the
+           previous physics step and reaches the opposide side of object B''s
+           collider before the current step. To fix this, change the
+           ''Collision Detection'' property of the Rigidbody from ''Discrete''
+           to ''Continuous'' to detect stationary objects when moving at a fast
+           speed or to ''Continuous Dynamic'' to also detect other moving
+           objects.'
+  loadedLayout: 1

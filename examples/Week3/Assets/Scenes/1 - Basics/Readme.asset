@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  title: 'Week 3 Examples'
+  subtitle: '1 - Basics'
+  sections:
+  - heading: 'Trying to Play'
+    text: 'Click on the Play Button to enter Play Mode. Notice that nothing
+           happens in the Game View. You could add scripts to get it to do
+           stuff. However, isn''t Unity already supposed to handle making
+           GameObjects react to physics in a realistic manner, such as allowing
+           the Cube to fall via gravity?'
+  - heading: 'Adding the Physics Components'
+    text: 'The reason the Cube doesn''t react to Physics is because it does not
+           have all of the necessary components. While it already has a box
+           collider that allows it to be seen by the physics system, it
+           doesn''t have a Rigidbody that gives it the physics behaviours. If
+           you play the scene again after adding a Rigidbody, you''ll notice
+           that the Cube falls down onto the plane.'
+  - heading: 
+    text: 'Try adjusting the plane''s angle to see at what point the Cube
+           starts toppling over to the bottom of the plane (rather than
+           settling into place) when you repeat the simulation. Once you are
+           done experimenting, change it back to the original value of -20°.'
+  - heading: 'Changing the Collider'
+    text: 'Try disabling the box collider and adding a sphere collider instead.
+           What happens when you click the play button?'
+  - heading: ''
+    text: 'Your cube seemed to roll down like a sphere! This is because what
+           the physics system sees is not necessarily the same as what you see.
+           Remember, mesh filters define the visual geometery, colliders define
+           the geometry seen by the physics system.'
+  - heading: ''
+    text: 'When you are done experimenting, remove the sphere collider and
+           re-enable the box collider.'
+  - heading: 'Creating Friction'
+    text: 'Physic materials are what give the surface of the collider special
+           properties, like bounciness or friction. Go ahead and create a
+           physic material, adjust its friction, and add it to both the cube
+           and the plane so that the Cube now slowly slides down the plane.'
+  loadedLayout: 1

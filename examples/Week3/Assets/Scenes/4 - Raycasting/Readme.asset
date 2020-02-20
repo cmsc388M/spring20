@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf7219bab7fe46a1ad266029b2fee19, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  title: 'Week 3 Examples'
+  subtitle: '4 - Raycasting'
+  sections:
+  - heading: 'Setting the Scene'
+    text: 'This scene contains a plane as the ground, a wall at the end of the
+           plane, and some instances of the TargetCube prefab. Each of the
+           TargetCubes contain the tag ''ColorChangeable''. Additionally, you
+           have a cube as your player GameObject, similar to the second scene,
+           and it contains a script called Raycast Example, which contains a
+           single field that references a blue material.'
+  - heading: 'Your Task'
+    text: 'Your task, should you choose to accept it, is to Raycast out from
+           the player, and if a TargetCube is hit, then you should change its
+           material to the blue material. Additionally, you should use the
+           DrawRay helper function to cast a debug ray out from the player to
+           the hit point (if something was hit) or to 10,000 meters away (if
+           nothing was hit). Note that you will not be able to see the Debug
+           ray unless you turn on Gizmos in your Game View.'
+  loadedLayout: 1
