@@ -13,7 +13,7 @@ To complete the setup for this section, follow these steps:
 - Add a Rigidbody to the sphere in order to make it a physical object that is affected by physics and gravity.
 - Apply a physic material to make the ball bounce appropriately.
 - Scale your ball so that it is appropriately the size of a tennis ball.
-- Make this ball into a prefab and remove any instances of the barrel from your scene.
+- Make this ball into a prefab and remove any instances of the ball from your scene.
 
 ### Writing the Scripts
 
