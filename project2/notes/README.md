@@ -32,7 +32,7 @@ You will be developing your Barrel Bouncer VR application for the Oculus Quest, 
 
 ![Image of the Oculus Quest](https://about.fb.com/wp-content/uploads/2018/09/mz-final-exports-016.jpeg)
 
-The Oculus Quest is a mobile standalone 6DOF headset by Facebook. It allows you to both look around and walk around a space, thanks to the headset's four cameras that enable its inside-out tracking technology. It also supports two Oculus Touch motion controllers, which allow for a wide range of input.
+The Oculus Quest is a mobile standalone 6DOF headset by Facebook. It allows you to both look around and walk around a space, thanks to the headset's four cameras that enable its groundbreaking inside-out tracking system called Oculus Insight (see more on how that works [here](https://tech.fb.com/the-story-behind-oculus-insight-technology/)). The Quest also supports two Oculus Touch motion controllers, which allow for a wide range of input.
 
 For more information on the Oculus Quest, check out its [official product page](https://www.oculus.com/quest/).
 

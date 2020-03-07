@@ -1,6 +1,6 @@
 # Project 2: Barrel Bouncer VR Edition
 
-**Due:** Wednesday, March 25, 2020 at 4:59:59 AM EDT
+**Due:** Monday, March 30, 2020 at 4:59:59 AM EDT
 
 In project 1, you applied your knowledge of basic Unity concepts to develop a completed game from scratch. In this project, you will be taking that game and transforming it into a VR experience by adding in some common interactions with the headsets and motion controllers while adhering to some of the best performance and UX practices for virtual reality.
 

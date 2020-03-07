@@ -65,17 +65,21 @@ To install and set up the Oculus XR Plugin, follow the steps below:
 7. Click on the _**Oculus**_ subtab of the _**Project Settings**_ and then create a new serialized instance of the settings data.
 8. Change the _**Stereo Rendering Mode**_ to _**Multiview**_. In Unity, each of the eyes of a VR headset is considered as its own separate camera/display, which can cause redundant computational and graphical workloads and thus significantly reduce performance. The Single Pass Stereo rendering mode provides some optimizations for a VR setup so that both cameras can share some computations and the same GameObjects are rendered onto both displays before iterating on to the next GameObject. Multiview is built on the same infrastructure as Single-Pass Instancing, but relies on the mobile graphics driver's implementation of certain optimizations rather than Unity's. To learn more about Single Pass Stereo rendering, check out [this page](https://docs.unity3d.com/Manual/SinglePassStereoRendering.html) on the Unity documentation.
 
+![GIF showing installation and setup of Oculus XR Plugin](images/oculus-xr-plugin.gif)
+
 #### The Oculus Integration
 
-The Oculus Integration is a 3rd-party vendor-specific SDK provided by Oculus and as such can be found on the Asset Store. Once you find the Oculus Integration, download and import it into your project. Note that this step could take 15-30 minutes to complete, so it is advisable to work on something else while this finishes in the background.
+The Oculus Integration is a 3rd-party vendor-specific SDK provided by Oculus and as such can be found on the Asset Store. Once you find the Oculus Integration, download and import it into your project. Note that this step could take 15-30 minutes to complete, so it is advisable to work on something else while this finishes in the background. If you get popups saying that there are newer versions of plugins available, go ahead and select the option to upgrade them.
 
-_NOTE: The Oculus Integration defines its own Player Controller script, which can conflict with the script you defined and cause errors. As such, you should rename your script in order to avoid these errors, both by renaming the file itself from the project window and by changing the class name from within the file contents itself._
+_NOTE: The Oculus Integration defines its own Player Controller script, which can conflict with the script you defined and thus cause errors. As such, you should rename your script in order to avoid these errors, both by renaming the file itself from the project window and by changing the class name from within the file contents itself._
+
+The Oculus Integration also includes many example scenes that showcase how to implement various VR features and setups using the Oculus Integration's components and prefabs. These example scenes constitute its "Sample Framework". Scenes that are part of the Sample Framework can be found in the following folder: `Assets` -> `Oculus` -> `SampleFramework` -> `Usage`. They may be a useful reference to you as you work on this project.
 
 ### Basic Scene Setup
 
 #### Headset Tracking
 
-First, you should delete your _**Player**_ GameObject from your scene and also make sure there are no other Cameras in your scene. The Oculus Integration already contains two prefabs that can act as a Player GameObject: the _**OVRCameraRig**_ and the _**OVRPlayerController**_. For this project, we will use the _**OVRCameraRig**_ prefab as our player GameObject. Go ahead and drag this prefab into your scene and make sure its position and rotation are set to (0, 0, 0).
+First, you should delete your _**Player**_ GameObject from your scene and also make sure there are no other Cameras in your scene. The Oculus Integration already contains two prefabs that can act as a Player GameObject: the _**OVRCameraRig**_ and the _**OVRPlayerController**_. For this project, we will use the _**OVRCameraRig**_ prefab as our player GameObject, which is located in `Assets` -> `Oculus` -> `VR` -> `Prefabs`. Go ahead and drag this prefab into your scene and make sure its position and rotation are set to (0, 0, 0).
 
 The _**OVRCameraRig**_ GameObject contains a few important components. The _**OVR Camera Rig**_ component automatically adjusts the player's camera's translational and rotational movement based on the motion of the headset. The _**OVR Manager**_ component provides the main interface to the VR hardware. The _**OVR Headset Emulator**_ is supposed to allow you to simulate headset rotations from within the Unity Editor on your computer, but it only works with Windows and it doesn't seem to work with the latest Unity version anyway.
 
@@ -91,9 +95,11 @@ The _**OVR Manager**_ also keeps track of the controllers' movements and then ap
 
 The _**LeftControllerAnchor**_ is a child GameObject of the _**LeftHandAnchor**_ GameObject, which is a a child GameObject of the _**TrackingSpace**_ GameObject, which is a child GameObject of the _**OVRCameraRig**_ GameObject. The _**RightControllerAnchor**_ also has a similar hierarchy structure.
 
-The Oculus Integration also provides an _**OVRControllerPrefab**_, which determines and displays a model of the correct type of controller in your scene based on the type of headset you're using (i.e. Oculus Go controlller, Gear VR controller, Oculus Quest Touch controllers, etc.).
+The Oculus Integration also provides an _**OVRControllerPrefab**_, which determines and displays a model of the correct type of controller in your scene based on the type of headset you're using (i.e. Oculus Go controlller, Gear VR controller, Oculus Quest Touch controllers, etc.). The _**OVRControllerPrefab**_ is also located in the following folder: `Assets` -> `Oculus` -> `VR` -> `Prefabs`. Go ahead and create two instances of the _**OVRControllerPrefab**_, one as a child GameObject of the _**LeftControllerAnchor**_ and one as a child GameObject of the _**RightControllerAnchor**_. Then, on the _**OVR Controller Helper**_ component, specify the _**Controller**_ type as _**L Touch**_ and _**R Touch**_, respectively.
 
-Go ahead and create two instances of the _**OVRControllerPrefab**_, one as a child GameObject of the _**LeftControllerAnchor**_ and one as a child GameObject of the _**RightControllerAnchor**_. Then, on the _**OVR Controller Helper**_ component, specify the _**Controller**_ type as _**L Touch**_ and _**R Touch**_, respectively.
+Once you have completed the scene setup, your hierarchy should look like this:
+
+![Exploded heirarchy of OVRCameraRig](images/ovr-scene-setup.png)
 
 ### Closing Notes
 
