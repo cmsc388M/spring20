@@ -2,7 +2,11 @@
 
 ## Part 1: Setting Up Your Project for VR
 
-### Build Settings
+In this section, you'll be applying some general project-wide settings that will optimize the performance for mobile VR. Then, you will install the XR development tools that you will use to build your app and do some basic set up in your scene to get it to work with the Oculus Quest headset and controllers.
+
+### General Project Settings
+
+#### Build Settings
 
 First, open up your _**Build Settings**_ and modify the following:
 
@@ -10,7 +14,7 @@ First, open up your _**Build Settings**_ and modify the following:
 - Since the Oculus Quest is an Android-based VR headset, you should switch the platform to _**Android**_.
 - Change the _**Texture Compression**_ setting to _**ATSC**_. Oculus recommends using this for mobile VR to provide the best balance between quality and file size.
 
-### Player Settings
+#### Player Settings
 
 Next, go in to your _**Player Settings**_ and modify the following:
 
@@ -44,26 +48,50 @@ Next, go in to your _**Player Settings**_ and modify the following:
 - **XR Settings**
   - _NOTE: Do NOT select any of these options. These refer to Unity's built-in XR platform integrations, which has been deprecated in Unity 2019.3 as they transition over to their new XR plug-in framework that we will be using for this project. Check out [this blog post](https://blogs.unity3d.com/2020/01/24/unity-xr-platform-updates/) for more information on the change._
 
+#### Quality Settings
+
+So far, you've been opening up your _**Player Settings**_ by clicking on the button in your _**Build Settings**_. However, the _**Player Settings**_ are a small part of a larger set of settings for your project called _**Project Settings**_. The _**Project Settings**_ window can also be launched by going to your menu bar and clicking on `Edit` -> `Project Settings`. Each type of project settings can be found on the tabs along the left fourth of the window.
+
+One type of of project settings is the _**Quality Settings**_, which we will be modifying in this section. The first quality settings we will have to change are the _**Quality Levels**_. Since we are only building to the Android platform, we only care about the levels in the Android column. Make the _**Medium**_ level the default level for Android and unselect all other levels so that they won't be used. The default level for each platform is indicated by the green box. Below is a screenshot of what the level settings should look like.
+
+![Image showing quality level settings for Android](images/quality-levels.png)
+
+Next click on the _**Medium**_ level so that you can modify the quality settings for that level to the values listed below:
+
+- **Rendering**
+  - **Anti Aliasing:** 4x Multi Sampling
+    - This is a graphics processing technique that smoothes out the edges of shapes and refines its understanding of the edges as you move around the scene over time. Without this setting, it is possible that your environment can appear to be glitchy when you move.
+- **Shadows**
+  - **Shadows:** Hard Shadows Only
+    - This creates much sharper edges and distinction between shadows rather than having them fade gradually but greatly increases performance.
+- **Other**
+  - **V Sync Count:** Don't Sync
+    - This disables Unity's feature of synchronizing rendering with vertical blanks. You should turn this off because the Oculus Runtime handles it's own V Sync.
+
+#### Graphics Settings
+
+The _**Graphic Settings**_ are another type of project settings that you will have to modify to optimize it for performance on mobile VR systems.
+
+Go onto the _**Tier Settings**_, uncheck the _**Use Defaults**_ option for all tiers, and apply the following settings for each tier:
+
+- **Standard Shader Quality:** Low
+- **Rendering Path:** Forward
+- **Realtime Global Illumination CPU Usage:** Low
+
 ### Downloading the XR Plugins and SDKs
 
 There are two main tools we will need to obtain to get this project to work with VR: the Oculus XR Plugin, which is installed via Unity's XR Management system, and the Oculus Integration SDK, which is installed via the Asset Store.
 
 #### XR Management and the Oculus XR Plugin
 
-As mentioned above, Unity has a new XR plug-in architecture where you use the XR Management Project Settings to install and load the plugins for the XR platforms you would like your application to support. By default, the XR Management settings are not included in the core Unity Editor, so you will need to install this feature via the Package Manager.
+As mentioned above, Unity has a new XR plug-in architecture that you should use to install and load the plugins for the XR platforms you would like your application to support. Below are the steps to install and set up the Oculus XR Plugin:
 
-A package is a collection of assets, which are any kind of files supported by Unity (scripts, scenes, materials, 3D models, audio, images, etc.). In the past, you may have used the Asset Store to download packages. Both the Asset Store and Package Manager allow you to import and upgrade packages. The difference between the two is that the Package Manager is primarily used to install optional features of Unity itself into your project, whereas the Asset Store is generally used as a marketplace for specific content that would end up in your project/scene, including UIs, 3D models, tools, SDKs, custom effects, and more.
-
-To install and set up the Oculus XR Plugin, follow the steps below:
-
-1. Open up the _**Package Manager**_ by going to your menu bar and navigating to `Window` -> `Package Manager`.
-2. In the new window that pops up, scroll all the way down to the bottom and install the _**XR Management**_ plugin.
-3. Once this has installed, go to your menu bar and navigate to `Edit` -> `Project Settings`.
-4. In the new window that pops up, click on the _**XR Plugin Management**_ tab and then install the _**Oculus XR Plugin**_.
-5. Add the _**Oculus Loader**_ to the list of _**Plugin Providers**_.
-6. Click on the _**Input Helpers**_ subtab of the _**Project Settings**_ and then click on the _**Install Legacy Input Helpers Package**_ button.
-7. Click on the _**Oculus**_ subtab of the _**Project Settings**_ and then create a new serialized instance of the settings data.
-8. Change the _**Stereo Rendering Mode**_ to _**Multiview**_. In Unity, each of the eyes of a VR headset is considered as its own separate camera/display, which can cause redundant computational and graphical workloads and thus significantly reduce performance. The Single Pass Stereo rendering mode provides some optimizations for a VR setup so that both cameras can share some computations and the same GameObjects are rendered onto both displays before iterating on to the next GameObject. Multiview is built on the same infrastructure as Single-Pass Instancing, but relies on the mobile graphics driver's implementation of certain optimizations rather than Unity's. To learn more about Single Pass Stereo rendering, check out [this page](https://docs.unity3d.com/Manual/SinglePassStereoRendering.html) on the Unity documentation.
+1. In the same _**Project Settings**_ window that you used above, click on the _**XR Plugin Management**_ tab and then click on the _**Install XR Plugin Management**_ button.
+2. Once this has completed, install the _**Oculus XR Plugin**_.
+3. Add the _**Oculus Loader**_ to the list of _**Plugin Providers**_.
+4. Click on the _**Input Helpers**_ subtab of the _**Project Settings**_ and then click on the _**Install Legacy Input Helpers Package**_ button.
+5. Click on the _**Oculus**_ subtab of the _**Project Settings**_ and then create a new serialized instance of the settings data.
+6. Change the _**Stereo Rendering Mode**_ to _**Multiview**_. In Unity, each of the eyes of a VR headset is considered as its own separate camera/display, which can cause redundant computational and graphical workloads and thus significantly reduce performance. The Single Pass Stereo rendering mode provides some optimizations for a VR setup so that both cameras can share some computations and the same GameObjects are rendered onto both displays before iterating on to the next GameObject. Multiview is built on the same infrastructure as Single-Pass Instancing, but relies on the mobile graphics driver's implementation of certain optimizations rather than Unity's. To learn more about Single Pass Stereo rendering, check out [this page](https://docs.unity3d.com/Manual/SinglePassStereoRendering.html) on the Unity documentation.
 
 ![GIF showing installation and setup of Oculus XR Plugin](images/oculus-xr-plugin.gif)
 
@@ -73,7 +101,7 @@ The Oculus Integration is a 3rd-party vendor-specific SDK provided by Oculus and
 
 _NOTE: The Oculus Integration defines its own Player Controller script, which can conflict with the script you defined and thus cause errors. As such, you should rename your script in order to avoid these errors, both by renaming the file itself from the project window and by changing the class name from within the file contents itself._
 
-The Oculus Integration also includes many example scenes that showcase how to implement various VR features and setups using the Oculus Integration's components and prefabs. These example scenes constitute its "Sample Framework". Scenes that are part of the Sample Framework can be found in the following folder: `Assets` -> `Oculus` -> `SampleFramework` -> `Usage`. They may be a useful reference to you as you work on this project.
+The Oculus Integration also includes many example scenes that showcase how to implement various VR features and setups using the Oculus Integration's components and prefabs. These example scenes constitute its "Sample Framework". Scenes that are part of the Sample Framework can be found in the following folder: `Assets` -> `Oculus` -> `SampleFramework` -> `Usage`. They may be a useful reference to you as you work on this project. The documentation that explains how each of the scenes work can be found at [this link](https://developer.oculus.com/documentation/unity/unity-sample-framework/).
 
 ### Basic Scene Setup
 
