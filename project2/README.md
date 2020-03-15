@@ -9,7 +9,7 @@ We have built and deployed an example version of the project to the VR headsets 
 * [Part 0: Notes About the SDKs and the Hardware](notes)
 * [Part 1: Setting Up Your Project for VR](setup)
 * [Part 2: Modifications to Your Environment](environment-mods)
-* [Part 3: Movement in VR](vr-movement)
+* [Part 3: Movement in VR](locomotion)
 * [Part 4: Throwing Balls with Motion Controllers](throw-balls)
 * [Part 5: Adjusting the UI](ui)
 * [Part 6: A More Realistic Spatial Audio Experience](audio)

@@ -32,6 +32,8 @@ Start off by adding the _**Simple Capsule With Stick Movement**_ script from the
 Since we've already discussed why the first functionality can be unnatural and sickening, we will disable this functionality and only make use of the script's second functionality. Go ahead and change the following properties of the _**Simple Capsule With Stick Movement**_ as described below:
 
 - Unselect the _**Enable Linear Movement**_ property.
+- Keep the _**Enable Rotation**_ property checked.
+- Unselect the _**HMD Rotates Player**_ property. This causes your player GameObject (in this case the OVRCameraRig) itself to handle the y-axis rotations as you turn your head around, while the cameras on the eyes rotate on the other axes (similar to some of your project 1 player controller implementations). However, this may cause the bucket to rotate around the _**OVRCameraRig**_'s pivot unnaturally as you move your head (since it is also one of its child GameObjects), especially if you are standing at an offset or are moving around your space. As a result, we just want the Cameras in the tracking space to be affected by the headset movement.
 - Select the _**Rotation Either Thumbstick**_ property. This will allow you to use both the left and right touch controllers for snap rotation functionality.
 - Change the _**Rotation Angle**_ to 30 degrees.
 - Drag in the reference to your _**OVRCameraRig**_.
@@ -49,7 +51,7 @@ The Oculus Integration defines numerous scripts related to teleportation that al
 1. Open up the "Locomotion" scene from the Oculus Sample Framework.
 2. Find the _**LocomotionController**_ GameObject in the scene (it's a child GameObject of the PlayerController) and make a prefab out of it by dragging it into the Project Window.
 3. Switch back to the main gameplay scene of your barrel bouncer project.
-4. Add an instance of the _**LocomotionController**_ prefab into your scene as a child GameObject of your _**OVRCameraRig**_.
+4. Add an instance of the _**LocomotionController**_ prefab into the root of your scene positioned at origin.
 
 #### Setting Its Properties
 

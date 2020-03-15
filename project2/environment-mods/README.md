@@ -31,7 +31,7 @@ Place 10+ instances of your barrels prefabs into your scene accessible to your p
 Instead of instantiating and throwing balls with the left mouse button, the balls will now be pre-placed into the scene and players will be able to pick them up and throw them with the motion controllers. The balls will be in a bucket, which will be placed right in front of the player and will move with the player. 
 
 1. Find a model of a bucket and import it into your project. You may do so using any of the methods described in project 1A (i.e. Asset Store or online sources), as described [here](https://cmsc388m.github.io/spring20/project1a/import-models/).
-2. Place the bucket into the scene as a child GameObject of the _**OVRCameraRig**_, somewhere right in front of the player near their waist level so that they can realistically reach into it. Resize it if necessary.
+2. Place the bucket into the scene as a child GameObject of the _**OVRCameraRig**_, somewhere right in front of the player near their waist level so that they can realistically reach into it. Remember that the y-value defines its height above the ground and the z-value defines how far in front of the player it is, both in meters. Additionally, resize the model if necessary.
 3. If you have a script on your ball prefab that destroys the ball 5 seconds after insantiation, comment out that code so that the balls remain in the scene indefinitely. You will handle destroying the ball 5 seconds after its been thrown in a later section.
 4. Place 5+ instances of your ball prefab into your scene as child GameObjects of the _**Bucket**_. Once again, the balls should be approximately the size of a tennis ball in order to realistically fit in your hand, so you may need to resize the prefab if necessary if you hadn't done this correctly in project 1B. Additionally, make sure that the balls are all contained within the bucket and are not overlapping with each other.
 
@@ -74,4 +74,4 @@ If you still seem to have trouble trying to get the lighting to bake in a reason
 - You could try reducing the _**Lightmap Resolution**_. The shadows and lighting may not be as precise, but will still have the same general shape.
 - You could reduce the number of _**Direct Samples**_ and _**Indirect Samples**_ that the lightmapper uses for calculations. However, this can result in your GameObjects looking more "noisy". For some examples of how changing the sample values affect how your scene looks, check out the "Tweaking Bake Settings" section of [this page on the Unity Docs](https://docs.unity3d.com/2019.2/Documentation/Manual/Lightmapping.html)
 
-## [Previous Section](../setup) | [Go Home](..) | [Next Section](../vr-movement)
+## [Previous Section](../setup) | [Go Home](..) | [Next Section](../locomotion)

@@ -107,7 +107,7 @@ The Oculus Integration also includes many example scenes that showcase how to im
 
 #### Headset Tracking
 
-First, you should delete your _**Player**_ GameObject from your scene and also make sure there are no other Cameras in your scene. The Oculus Integration already contains two prefabs that can act as a Player GameObject: the _**OVRCameraRig**_ and the _**OVRPlayerController**_. For this project, we will use the _**OVRCameraRig**_ prefab as our player GameObject, which is located in `Assets` -> `Oculus` -> `VR` -> `Prefabs`. Go ahead and drag this prefab into your scene and make sure its position and rotation are set to (0, 0, 0).
+First, you should delete your _**Player**_ GameObject from your scene and also make sure there are no other Cameras in your scene. The Oculus Integration already contains two prefabs that can act as a Player GameObject: the _**OVRCameraRig**_ and the _**OVRPlayerController**_. For this project, we will use the _**OVRCameraRig**_ prefab as our player GameObject, which is located in `Assets` -> `Oculus` -> `VR` -> `Prefabs`. Go ahead and drag this prefab into your scene, make sure its position and rotation are set to (0, 0, 0), and set its tag to "Player".
 
 The _**OVRCameraRig**_ GameObject contains a few important components. The _**OVR Camera Rig**_ component automatically adjusts the player's camera's translational and rotational movement based on the motion of the headset. The _**OVR Manager**_ component provides the main interface to the VR hardware. The _**OVR Headset Emulator**_ is supposed to allow you to simulate headset rotations from within the Unity Editor on your computer, but it only works with Windows and it doesn't seem to work with the latest Unity version anyway.
 
