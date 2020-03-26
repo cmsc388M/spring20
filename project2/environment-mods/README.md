@@ -16,6 +16,8 @@ If you did not correctly consider scaling when you initially designed your envir
 - You could temporarily place a default capsule GameObject into the scene and use it as a reference for how big things should be, since the capsule is a good approximation for the size of a human.
 - You could build the game to the headset in order to see what feels too large. Then you could use trial and error to repeat this process and adjust the scales accordingly. Note that you should generate the lighting data, as described [later in this section](#lightmapping), prior to building your `.apk` file. If you do this, you should also make sure to regenerate the data once you are finished modifying your environment so that the lighting is realistic relative to the latest scales and positions of the static GameObjects.
 
+Additionally, you will want to make sure that the floor or ground of your environment is positioned at a y-value of 0, since this will be where the player is standing.
+
 This discussion of realistic scaling and positioning will be important as you modify your environment for the rest of this section as well. For example, you may be able to pick up a ball that is 0.5 meters away from you, but you probably can't pick up a ball that is 5 meters away from you.
 
 ### Adding Barrels Into Scene

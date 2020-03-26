@@ -74,4 +74,8 @@ As you may have done in the past when polling keyboard input, you should poll fo
 
 Finally, you may want to note that the menu button on the Touch Controller is mapped to `Button.Start`.
 
+### Bonus Task (Optional)
+
+Create an "intro scene" with a 360° photo or video, some music, and a world-space UI that stays in place within your scene. The UI could welcome the user to the app, cycle through fun facts about barrels, and allow them to start or exit the game. You will also have to change the UI in your gameplay scene to go back to the intro scene instead of exiting, and you will have to deal with additional scene management. A good first step towards having 360° photos/videos is by placing a sphere in your scene that surrounds the user. Check out [this tutorial](https://youtu.be/hmCxXFY-JHs) on how to use 360° video in Unity. Finally, for the audio, it does not need to persist between scenes, but the sound should originate around the entire sphere rather than from a single point in space. It may be worth completing the next section before attempting this final part.
+
 ## [Previous Section](../throw-balls) | [Go Home](..) | [Next Section](../audio)
