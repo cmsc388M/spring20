@@ -34,7 +34,7 @@ The _**UIHelpers**_ prefab contains three child GameObjects, each with their own
   - The _**Line Renderer**_ component is a standard Unity component used to draw a line in 3D space. You already saw a usage of this in the teleportation section.
     - In the current version of the Oculus Integration, it looks like the _**Material**_ for the _**Line Renderer**_ in this prefab is missing. As a result, you should create your own material, set its _**Shader**_ to `Oculus` -> `Unlit`, change the color (if you'd like), and assign this new material to the _**Line Renderer**_.
   - The _**Laser Pointer**_ script basically visualizes the UI Raycast performed by the _**OVR Input Module**_ by appropriately adjusting the starting and ending points of the _**Line Renderer**_ and then moving a small _**Sphere**_ onto the end of the line.
-    - You should change its _**Laser Beam Behavior**_ property to _**On When Target Hit**_. This will only show the visualization when the user is actually pointing onto a UI Canvas rather than having the line be present at all times.
+    - You should change its _**Laser Beam Behavior**_ property to _**On When Target Hit**_. This will only show the visualization when the user is actually pointing onto a UI Canvas rather than having the line be present at all times. Note that _**Laser Beam Behavior**_ is a private field in the _**Laser Pointer**_ script, and thus it can't be seen in the Unity Editor by default. Opening up the script and changing the field's access level to public should fix this.
 - There is also a simple, small _**Sphere**_ GameObject that is placed at the current "hit point" onto the UI, as described in the last bullet point.
 
 The _**UIHelpers**_ GameObject also contains a script called the _**Handed Input Selector**_, which basically determines the currently active controller and then sets the _**OVR Input Module**_'s _**Ray Transform**_ to that controller's anchor's transform.
@@ -60,9 +60,9 @@ _NOTE: You can use the_ **CenterEyeAnchor**_'s Transform to determine current po
 
 #### Polling for Input
 
-For this section, you will need to refer to the [Documentation for OVRInput](https://developer.oculus.com/documentation/unity/unity-ovrinput/). It contains some great code examples of how you can obtain input as well as the controller mappings.
+For this section, you will need to refer to the [Documentation for OVRInput](https://developer.oculus.com/documentation/unity/unity-ovrinput/). It contains some great code examples of how you can obtain input as well as the controller mappings. Since you will be dealing with the menu button on the Touch Controller, you will want to note that it is mapped to `Button.Start`.
 
-In particular, you may notice that there are three methods within the _**OVRInput**_ class that you can use to access the state of controller input:`Get()`, `GetDown()`, and `GetUp()`. For buttons, they all return boolean values of whether it is pressed, but under different conditions.
+As you go through the documentation, you may notice that there are three methods within the _**OVRInput**_ class that you can use to access the state of controller input: `Get()`, `GetDown()`, and `GetUp()`. For buttons, they all return boolean values of whether it is pressed, but under different conditions.
 
 - `GetDown()` only returns true during the frame where the button state has changed from not pressed to pressed.
 - `Get()` returns true during all frames where the button is continued to be pressed.
@@ -72,7 +72,20 @@ This follows the patterns of many other interactions in Unity that you may have 
 
 As you may have done in the past when polling keyboard input, you should poll for controller input within your `Update()` method to check for changes to the button state during each frame.
 
-Finally, you may want to note that the menu button on the Touch Controller is mapped to `Button.Start`.
+##### Example
+
+Below is an example code snippet that shows how you might poll for input to determine whether the right Touch controller's "B" button has just been released during the current frame. You will of course need to modify this to fit your own use case.
+
+``` csharp
+// Update is called once per frame
+void Update()
+{
+    if (OVRInput.GetUp(OVRInput.Button.Two, OVRInput.Controller.RTouch)
+    {
+        // Do stuff here
+    }
+}
+```
 
 ### Bonus Task (Optional)
 
