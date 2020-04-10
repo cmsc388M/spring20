@@ -1,10 +1,10 @@
 # Project 3: Barrel Bouncer AR Edition
 
-## Part 1: Setting Up Your Project for AR
+## Part 1: Configuring Your Project for AR
 
 In this section, you'll be configuring your Unity project for mobile AR development. This will involve modifying project settings as well as installing the XR development tools that you will use to build your app. Note that we will be testing your submission on Android phones, so you are only required to configure the project for ARCore development. However, if you plan on testing the app on your own iOS device, you should set the appropriate iOS and ARKit settings as well. Instructions for both have been included below.
 
-_NOTE: For this project, you will be building on top of a copy of your completed project 1c,_ **NOT** _your project 2. If you do not have a copy of this, you may download your submission on ELMS and then open it up in Unity. If you do it this way, it you should select the correct_ **Target Platform** _within the Unity Hub before opening it in order to save you time._
+_NOTE: For this project, you will be building on top of a copy of your completed project 1c,_ NOT _your project 2. If you do not have a copy of this, you may download your submission on ELMS and then open it up in Unity. If you do it this way, it you should select the correct_ **Target Platform** _within the Unity Hub before opening it in order to save you time._
 
 ### General Project Settings
 
@@ -80,19 +80,27 @@ Unity works on a large number of features and tools for a wide, diverse set of u
 
 As discussed in the previous section, you will be using Unity's AR Foundation and the XR Interaction Toolkit to complete this project. Since these are optional features provided by Unity, you can install them using the package manager. To open up the _**Package Manager**_ window, navigate to `Window` -> `Package Manager` from the menu bar at the top. Once this is open, you will see a list of available packages in alphabetical order, including some that you already have installed. In fact, when you selected the options to support ARCore and ARKit from the XR Plugin Management tool, it installed the _**ARCore XR Plugin**_ and the _**ARKit XR Plugin**_ for you behind the scenes. Additionally, if you scroll all the way down to the bottom, you will see that even the _**XR Plugin Management**_ tool itself is a package that you installed.
 
+#### Upgrading the Plugins
+
+For this project, we will be making use of preview versions of the AR development frameworks, so we will also upgrade the XR plugins to the latest preview versions to be compatible with them. By default, preview packages do not show up in the package manager. In order to get around this, click on the _**Advanced**_ button near at the top of the _**Package Manager**_ window and select the option for _**Show Preview Packages**_. Then, go ahead and upgrade the _**ARCore XR Plugin**_ (and the _**ARKit XR Plugin**_ if you're building for iOS) to the latest preview version (`4.0.0 - preview.1` as of this writing).
+
 #### The Development Frameworks
 
-You can now move on to installing the development tools. First, install the latest stable version of the _**AR Foundation**_ framework (`3.0.1` as of this writing). Next, install the package for the _**XR Interaction Toolkit**_. Note that the _**XR Interaction Toolkit**_ is still in preview, so it won't show up in the package manager by default. In order to get around this, click on the _**Advanced**_ button near at the top of the _**Package Manager**_ window and select the option for _**Show Preview Packages**_.
+You can now move on to installing the development tools. Install the latest preview version of the _**AR Foundation**_ framework (`4.0.0 - preview.1` as of this writing) and the _**XR Interaction Toolkit**_ (`0.9.4` as of this writing).
 
 #### Face Tracking
 
-If you are going to be testing on an iOS device, you should also install the latest stable version of the _**ARKit Face Tracking**_ package (`3.0.1` as of this writing). You may be wondering why there's two separate ARKit packages or why we aren't importing a "Face Tracking" package for ARCore, especially since we'll be using face tracking in this project to capture reactions to your score. Unity explains the reasoning behind this as follows:
+If you are going to be testing on an iOS device, you should also install the latest preview version of the _**ARKit Face Tracking**_ package (`4.0.0 - preview.1` as of this writing). You may be wondering why there's two separate ARKit packages or why we aren't importing a "Face Tracking" package for ARCore, especially since we'll be using face tracking in this project to capture reactions to your score. Unity explains the reasoning behind this as follows:
 
-- _Apple's App Store will reject an app that contains certain face tracking-related symbols in its binary if the app developer does not intend to use face tracking, so we've broken out face tracking support into a separate package to avoid any ambiguity._ - [Source](https://docs.unity3d.com/Packages/com.unity.xr.arkit@3.0/manual/index.html)
+- _Apple's App Store will reject an app that contains certain face tracking-related symbols in its binary if the app developer does not intend to use face tracking, so we've broken out face tracking support into a separate package to avoid any ambiguity._ - [Source](https://docs.unity3d.com/Packages/com.unity.xr.arkit@4.0/manual/index.html)
 
 Google does not have this restriction on the Play Store, hence why there is just a single ARCore XR Plugin for that contains all of the supported ARCore features, including face tracking.
 
 Another difference between the two AR platforms is that Apple only supports face tracking functionalities on devices with a TrueDepth camera (i.e. devices that have Face ID). This ensures that AR experiences using your face are of a much better quality and have much better accuracy, but on the flip side it requires you to have a newer phone to test this out. Google, on the other hand, allows face tracking on pretty much all ARCore-supported Android devices, as long as it has a front-facing camera. This may mean that the experience may not be as precise, but it gives the capability to a much larger portfolio of devices.
+
+### Importing Custom Package for This Project
+
+We have created a custom package that contains some useful shaders, materials, and scripts that you will use later in this project. You can find this package on [the GitHub page for this project](https://github.com/cmsc388M/spring20/tree/master/project3). Once you download this file, import its assets into your project by navigating to `Assets` -> `Import Package` -> `Custom Package` from your menu bar and then selecting the `Project3StarterAssets.unitypackage` file.
 
 ### Closing Notes
 

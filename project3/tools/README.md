@@ -44,12 +44,12 @@ In this project you will be making use of both the AR Foundation framework and t
 
 **AR Foundation**
 
-- [Documentation](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@latest/)
+- [Documentation](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@4.0/)
 - [Examples](https://github.com/Unity-Technologies/arfoundation-samples)
 
 **XR Interaction Toolkit**
 
-- [Documentation](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@latest/)
+- [Documentation](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@0.9/)
 - [Examples](https://github.com/Unity-Technologies/XR-Interaction-Toolkit-Examples)
 
-## [Go Home](..) | [Next Section](../setup)
+## [Go Home](..) | [Next Section](../configuration)

@@ -1,6 +1,6 @@
 # Project 3: Barrel Bouncer AR Edition
 
-## Part 6: Closing the Game Loop
+## Part 9: Closing the Game Loop
 
 Coming soon...
 

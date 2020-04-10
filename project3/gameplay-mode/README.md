@@ -1,6 +1,6 @@
 # Project 3: Barrel Bouncer AR Edition
 
-## Part 5: Going into Gameplay Mode
+## Part 8: Going into Gameplay Mode
 
 Coming soon...
 
