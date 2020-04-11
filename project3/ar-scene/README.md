@@ -24,7 +24,7 @@ The _**AR Session Origin**_ gameobject also includes a single child gameobject c
 - [AR Camera Background](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@4.0/manual/index.html#ar-camera-background)
   - This component takes your phone's camera feed and applies it to the app's background each frame, essentially enabling you to see the image that the camera is currently capturing on your phone's screen.
 
-You should also label the _**AR Camera**_ gameobject with the tag _**MainCamera**_.
+You should also label the _**AR Camera**_ GameObject with the tag _**MainCamera**_.
 
 At this point, if you build and test your app on your phone, you should be able to see the camera stream.
 

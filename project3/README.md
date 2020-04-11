@@ -12,7 +12,7 @@ A completed project apk and video footage of its gameplay will be posted here sh
 * [Part 1: Configuring Your Project for AR](configuration)
 * [Part 2: Creating Your First AR Scene](ar-scene)
 * [Part 3: Enabling Plane Detection and Visualization](plane-detection)
-* [Part 4: Setting Up Barrels In Your Environment](set-up-barrels)
+* [Part 4: Using Gestures to Set Up Barrels In Your Environment](set-up-barrels)
 * [Part 5: Accounting for Occlusion](occlusion)
 * [Part 6: Adjusting for Environmental Lighting](lighting)
 * [Part 7: Designing UIs for Phones](phone-uis)
