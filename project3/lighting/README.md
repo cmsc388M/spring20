@@ -8,11 +8,11 @@ The underlying ARCore and ARKit platforms can analyze each individual image that
 
 For this subsection, you will use a script to gather the four aforementioned lighting properties (brightness, color temperature, color correction, and main direction) and then apply them to the light in your scene each time your phone's camera receives new data. As part of the unitypackage, we have already provided you with a starter script called _**Light Estimation**_. It contains a function called `ChangeLighting` which is subscribed to the camera manager's `frameReceived` event. It is inside this function where all of your code for modifying the _**Directional Light**_'s properties must go (i.e. you cannot add any helper methods or outside fields). Before you do so, complete the following setup:
 
-1. On your _**AR Camera**_ GameObject, find the _**AR Camera Manager**_ component and change its _**Light Estimation Mode**_ setting to _**Ambient Intensity**_.
+1. On your _**AR Camera**_ GameObject, find the _**AR Camera Manager**_ component and change its _**Light Estimation Mode**_ setting to _**Everything**_.
 2. Add the _**Lighting Estimation**_ script onto your _**Directional Light**_ GameObject.
 3. In the slot for the _**Camera Manager**_ property, drag in the reference to your _**AR Camera**_'s _**AR Camera Manager**_ component.
 4. In the slot for the _**Light**_ property, drag in the reference to your _**Direction Light**_'s _**Light**_ component.
-5. Open up the script in your favorite code editor and write up your implementation for the `ChangeLighting` method. Make sure to check if each piece of data is actually available before actually assigning it to the _**Light**_'s properties.
+5. Open up the script in your favorite code editor and write up your implementation for the `ChangeLighting` method. Make sure to check if each piece of data is actually available before actually assigning it to the _**Light**_'s properties. Additionally, your light should take on the values from the main light that is detected, if possible.
 
 Note that you may find the documentation for [ARCameraFrameEventArgs](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@4.0/api/UnityEngine.XR.ARFoundation.ARCameraFrameEventArgs.html), [ARLightEstimationData](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@4.0/api/UnityEngine.XR.ARFoundation.ARLightEstimationData.html), and [Light](https://docs.unity3d.com/ScriptReference/Light.html) helpful for this part of the project, as well as the Lighting Estimation scene from the AR Foundation samples that we described in [Part 0](../tools/#resources-and-examples).
 

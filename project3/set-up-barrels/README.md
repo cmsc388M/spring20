@@ -2,7 +2,11 @@
 
 ## Part 4: Using Gestures to Set Up Barrels In Your Environment
 
-In the AR Best Design Practices Activity, you explored how the use of gestures like tap, drag, pinch, and twist were effective ways to handle the placement/selection, translation, scaling, and rotation of a virtual object in AR. Luckily, the XR Interaction Toolkit makes it easy to manipulate GameObjects in this way, as described [here](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@0.9/manual/index.html#ar-gestures).
+In the AR Best Design Practices Activity, you explored how the use of gestures like tap, drag, pinch, and twist were effective ways to handle the placement/selection, translation, scaling, and rotation of a virtual object in AR. Luckily, the XR Interaction Toolkit makes it easy to manipulate GameObjects in this way, as described [here](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@0.9/manual/index.html#ar-gestures). In this section, you will use these interactions to set up the barrels in your environment, like shown in the images below.
+
+| Placement | Selection | Translation | Rotation | Scale |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| ![GIF showing placement of 3 barrels](images/placement.gif) | ![GIF showing selection and unselection of a barrel](images/selection.gif) | ![GIF showing movement of a barrel](images/translation.gif) | ![GIF showing left and right rotation of a barrel](images/rotation.gif) | ![GIF showing scaling of a barrel](images/scale.gif) |
 
 ### The Game Manager
 
@@ -20,15 +24,15 @@ You may also notice that an _**Interaction Manager**_ GameObject was automatical
 
 On your menu bar, navigate to `GameObject` -> `XR` -> `AR Placement Interactable`. This will create a new GameObject with the _**AR Placement Interactable**_ component added to it. It has a property called _**Placement Prefab**_ and automatically takes care of instantiating a new instance of this prefab into your scene whenever you tap on a plane.
 
-You could just drag in the reference to the barrel prefab you have already created. However, you do not want to do that because the position of your barrel prefab is most likely defined from the center of the barrel (which would cause half of the barrel to appear under the floor/table). Instead, you want the base of the barrel to be flush with the plane. To do this, complete the following steps:
+You could just drag in the reference to the barrel prefab you have already created. However, this approach may not give you the intended behavior of having the base of the barrel spawn onto the plane. This is because the _**Transform**_ of your barrel prefab is most likely defined from the center of the barrel, which would cause half of the barrel to appear under the floor/table it is instantiated onto. To get around this, complete the following steps:
 
 1. Create a new empty GameObject called "AR Placement Object".
 2. Make a prefab out of this GameObject by dragging it into the project window. Then delete any instances of this prefab from the scene.
 3. Drag the prefab into the _**Placement Prefab**_ property of the _**AR Placement Interactable**_ to provide a reference to it.
 4. Double click on the prefab to open it up in the prefab editor.
-5. Create a new instance of your barrel as a child GameObject of the _**AR Placement Object**_ and then modify its position until the center of its base is at origin.
+5. Create a new instance of your barrel as a child GameObject of the _**AR Placement Object**_ and then modify its position until the center of its base is at origin (position <0, 0, 0>).
 
-At this point, you should be able to create a build of the app and place barrels into your world. It is recommended to test this out to see if it looks okay or if the size and position of the barrel need to be adjusted for a more realistic effect.
+At this point, you should be able to create a build of the app and place barrels into your world. It is recommended to test this out now to see if the barrels look okay or if the initial size and position needs to be adjusted for a more realistic effect.
 
 When a barrel has been placed onto a plane, you also want to increment the number of barrels remaining in your scene. Luckily, the _**AR Placement Interactable**_ script defines an _**On Object Placed**_ UnityEvent. On your _**Game Manager**_'s script, create a public method to increment the barrel count and then hook it up to this event in the Inspector.
 
@@ -41,24 +45,23 @@ All you need to do to enable this functionality is attach the _**AR Selection In
 In order to create this visualization, follow these steps:
 
 1. Open up your _**AR Placement Object**_ prefab in the prefab editor.
-2. Duplicate your barrel GameObject, set its name to "Selected Barrel", and make it a child GameObject of the original barrel.
-3. Remove any scripts and colliders from the _**Selected Barrel**_ GameObject. It should only consist of the graphical rendering.
-4. Set the local scale of the _**Selected Barrel**_ to be 1.1 so that the barrel can appear slightly larger when selected.
-5. Find the _**Materials**_ array on the _**Mesh Renderer**_ component of the _**Selected Barrel**_. Increase the size of this array by 1 and add the _**GlowMaterial**_ to its last element.
-6. Make the _**Selected Barrel**_ GameObject inactive, so this visualization doesn't appear by default.
-7. Find the _**Selection Visualization**_ property of the _**AR Selection Interactable**_ component of the _**AR Placement Object**_ and drag in a reference of the _**Selected Barrel**_ into that slot. This script will take care of toggling the visibility of this visualization when the barrel is selected and unselected.
+2. Duplicate your barrel GameObject and set its name to "Selected Barrel".
+3. Remove any scripts and colliders from the _**Selected Barrel**_ and its children. These GameObjects should only contribute to the graphical rendering.
+4. Find the _**Materials**_ array on the _**Mesh Renderer**_ component of the _**Selected Barrel**_. Increase the size of this array by 1 and add the _**GlowMaterial**_ to its last element. Repeat this for any of its children, if applicable.
+5. Make the _**Selected Barrel**_ GameObject inactive, so this visualization doesn't appear by default.
+6. Find the _**Selection Visualization**_ property of the _**AR Selection Interactable**_ component of the _**AR Placement Object**_ and drag in a reference of the _**Selected Barrel**_ into that slot. This script will take care of toggling the visibility of this visualization when the barrel is selected and unselected.
 
 ### Translation
 
-All you need to do to enable this functionality is attach the _**AR Translation Interactable**_ component to your _**AR Placement Object**_ prefab. This component also allows you to specify the max distance you can translate the object as well as the type of planes (i.e horizontal, vertical, any) you want to be able to translate onto.
+To enable this functionality, simply attach the _**AR Translation Interactable**_ component to your _**AR Placement Object**_ prefab. This component also allows you to specify the max distance you can translate the object as well as the type of planes (i.e horizontal, vertical, any) you want to be able to translate onto.
 
 ### Rotation
 
-All you need to do to enable this functionality is attach the _**AR Rotation Interactable**_ component to your _**AR Placement Object**_ prefab.
+To enable this functionality, simply attach the _**AR Rotation Interactable**_ component to your _**AR Placement Object**_ prefab.
 
 ### Scaling
 
-All you need to do to enable this functionality is attach the _**AR Scale Interactable**_ component to your _**AR Placement Object**_ prefab. This component also allows you to specify the minimum and maximum scale acceptable scale of your GameObject.
+To enable this functionality, simply attach the _**AR Scale Interactable**_ component to your _**AR Placement Object**_ prefab. This component also allows you to specify the minimum and maximum acceptable scale of your GameObject.
 
 ### Bonus Task (Optional)
 
