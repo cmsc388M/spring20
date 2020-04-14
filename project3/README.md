@@ -18,5 +18,5 @@ A completed project apk and video footage of its gameplay will be posted here sh
 * [Part 7: Designing UIs for Phones](phone-uis)
 * [Part 8: Going into Gameplay Mode](gameplay-mode)
 * [Part 9: Closing the Game Loop](game-loop)
-* [Part 10: Sharing Your Reaction](share-react)
+* [Part 10: Capturing and Sharing Your Reaction](share-reaction)
 * [Part 11: Submitting Your Project](submission)

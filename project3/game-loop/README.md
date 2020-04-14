@@ -4,4 +4,4 @@
 
 Coming soon...
 
-## [Previous Section](../gameplay-mode) | [Go Home](..) | [Next Section](../share-react)
+## [Previous Section](../gameplay-mode) | [Go Home](..) | [Next Section](../share-reaction)

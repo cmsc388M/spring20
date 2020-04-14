@@ -9,4 +9,4 @@ Your submission to ELMS should consist of the following files:
 * LastName_FirstName_BarrelBouncer_AR.zip
 * LastName_FirstName_BarrelBouncer_AR.apk
 
-## [Previous Section](../share-react) | [Go Home](..)
+## [Previous Section](../share-reaction) | [Go Home](..)
