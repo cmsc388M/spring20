@@ -6,7 +6,7 @@ In project 1, you applied your knowledge of basic Unity concepts to develop a co
 
 First, you will design a setup mode that detects and visualizes planes in your environment and lets you place barrels onto them. Then you will create a gameplay mode that lets you throw balls from the center of your camera as you race against the clock to gain points for destroying the barrels. Finally, you will develop a scene to capture your facial reaction with a wooden barrel filter and share your score with friends.
 
-A completed project apk and video footage of its gameplay will be posted here shortly.
+We have built an example version of the project, which you can download and install onto an ARCore-compatible Android phone [here](https://drive.google.com/file/d/1q0MP1jvjmqWgwr_H7_Pb4etnTH3YnV8i/). Additionally, you may also check out [this video](http://www.cs.umd.edu/class/spring2020/cmsc388M/videos/project3.mp4) of the gameplay.
 
 * [Part 0: A Look Into Unity’s AR Tools](tools)
 * [Part 1: Configuring Your Project for AR](configuration)
